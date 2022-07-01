@@ -34,6 +34,7 @@ function iterateProcesses(){
 
 function traverseCriteriaList(){
     let criteriaList = document.querySelector('assessment-criteria ul').children
+    let closeBtn = document.querySelector("a.ibm-close-link.ibm-fright")
     console.log('hit')
 
     for(let i = 0; criteriaList[i]; i++){
@@ -41,7 +42,7 @@ function traverseCriteriaList(){
     }
 
     // Close criteria pop up
-    popupWindow.querySelector('a').click()
+    closeBtn.click()
 
 }
 
@@ -52,12 +53,13 @@ const config = { attributes: true, childList: true, subtree: true };
 // Callback function to execute when mutations are observed
 const callback = function(mutationList) {
     for(const mutation of mutationList) {
-        console.log(mutation)
         if (mutation.type === "childList"){
             console.log("OPEN")
+            traverseCriteriaList()
             break
         } else if (mutation.attributeName === "style" && mutation.target.ariaHidden === "true"){
             console.log("CLOSED")
+            // continue iterating through processes
             break
         }      
     }
@@ -67,6 +69,3 @@ const callback = function(mutationList) {
 const observer = new MutationObserver(callback);
 // Start observing the target node for configured mutations
 observer.observe(targetNode, config);
-
-// TODO: Find specific mutations that trigger only when modal content is fully loaded
-    // document.querySelector("div.loading") => for when modal content fully loaded
