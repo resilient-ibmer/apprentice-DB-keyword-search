@@ -5,18 +5,12 @@ let [workHeader, compHeader] = document.querySelectorAll('.ibm-show')
 workHeader.click()
 compHeader.click()
 
-// Am I going to have to do this with Promises???
-
-// Giving the elements a chance to load.
+// Giving the process elements a chance to load.
 setTimeout(iterateProcesses, 1000)
 
 
 function iterateProcesses(){
-    let processes = document.querySelectorAll('#processes')
-    let popupWindow = document.querySelector('assessment-criteria div')
-    // Wait for popup window to finish loading
-     popupWindow.addEventListener("DOMContentLoaded", traverseCriteriaList)
-    // let popupWindow = document.querySelector('div.modal')
+    let processes = document.querySelectorAll('#processes') 
 
     for(let i = 0; processes[i]; i++){
         // Make this an event to when the drop downs open
@@ -52,31 +46,27 @@ function traverseCriteriaList(){
 }
 
 // Select the node that will be observed for mutations
-const targetNode = document.querySelector('assessment-criteria div')
-
+const targetNode = document.querySelector("div.modal.fade")
 // Options for the observer (which mutations to observe)
 const config = { attributes: true, childList: true, subtree: true };
-
 // Callback function to execute when mutations are observed
 const callback = function(mutationList) {
-    // Use traditional 'for loops' for IE 11
     for(const mutation of mutationList) {
         console.log(mutation)
-        if(mutation.target.ariaHidden === "false" && mutation.attributeName === "aria-hidden"){
-            console.log("open")
-            return
-        } else {
-            console.log("closed")
-            return
-        }
+        if (mutation.type === "childList"){
+            console.log("OPEN")
+            break
+        } else if (mutation.attributeName === "style" && mutation.target.ariaHidden === "true"){
+            console.log("CLOSED")
+            break
+        }      
     }
 };
 
 // Create an observer instance linked to the callback function
 const observer = new MutationObserver(callback);
-
 // Start observing the target node for configured mutations
 observer.observe(targetNode, config);
 
-// TODO: Find specific conditions that only trigger the mutation once in open or close
-// * Deeper target node, make it one of the child elements
+// TODO: Find specific mutations that trigger only when modal content is fully loaded
+    // document.querySelector("div.loading") => for when modal content fully loaded
