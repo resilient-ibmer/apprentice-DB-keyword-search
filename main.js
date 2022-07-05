@@ -1,5 +1,6 @@
 // The main headers where all the text is nested in.
 let [workHeader, compHeader] = document.querySelectorAll('.ibm-show')
+let criterias = 0 //133
 
 // Open the header drop downs
 workHeader.click()
@@ -13,10 +14,9 @@ async function iterateProcesses(){
     let processes = document.querySelectorAll('#processes') 
 
     for(let i = 0; processes[i]; i++){
-        console.log(i)
         // Expand process info
         processes[i].firstChild.firstChild.click()
-        // Wait for expanded drop down to load
+        // Wait/sleep until expanded drop down loads
         await new Promise(resolve => setTimeout(resolve, 100))
 
         let popupLink = document.querySelector('.ibm-popup-link')
@@ -25,7 +25,6 @@ async function iterateProcesses(){
         if(popupLink){
             // Open criteria pop up
             popupLink.click()
-            await new Promise(resolve => setTimeout(resolve, 2000))
         }
         // Collaps process info
         processes[i].firstChild.firstChild.click()
@@ -39,7 +38,8 @@ function traverseCriteriaList(){
     let closeBtn = document.querySelector("a.ibm-close-link.ibm-fright")
 
     for(let i = 0; criteriaList[i]; i++){
-        console.log(criteriaList[i].innerHTML)
+        console.log(criteriaList[i].innerHTML, criterias)
+        criterias++
     }
 
     // Close criteria pop up
