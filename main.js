@@ -9,33 +9,34 @@ compHeader.click()
 setTimeout(iterateProcesses, 1000)
 
 
-function iterateProcesses(){
+async function iterateProcesses(){
     let processes = document.querySelectorAll('#processes') 
 
     for(let i = 0; processes[i]; i++){
-        // Make this an event to when the drop downs open
-        setTimeout(() => {
-            console.log("inside timeout", i)
-            // Expand process info
-            processes[i].firstChild.firstChild.click()
-            
-            // If Comp, open Assesment Criteria link
-            if(document.querySelector('.ibm-popup-link')){
-                // Open criteria pop up
-                document.querySelector('.ibm-popup-link').click()
-            }
+        console.log(i)
+        // Expand process info
+        processes[i].firstChild.firstChild.click()
+        // Wait for expanded drop down to load
+        await new Promise(resolve => setTimeout(resolve, 100))
 
-        }, 1000)
+        let popupLink = document.querySelector('.ibm-popup-link')
+
+        // If Comp, open Assesment Criteria link
+        if(popupLink){
+            // Open criteria pop up
+            popupLink.click()
+            await new Promise(resolve => setTimeout(resolve, 2000))
+        }
+        // Collaps process info
+        processes[i].firstChild.firstChild.click()
 
     }
 
 }
 
-
 function traverseCriteriaList(){
     let criteriaList = document.querySelector('assessment-criteria ul').children
     let closeBtn = document.querySelector("a.ibm-close-link.ibm-fright")
-    console.log('hit')
 
     for(let i = 0; criteriaList[i]; i++){
         console.log(criteriaList[i].innerHTML)
@@ -51,6 +52,7 @@ const targetNode = document.querySelector("div.modal.fade")
 // Options for the observer (which mutations to observe)
 const config = { attributes: true, childList: true, subtree: true };
 // Callback function to execute when mutations are observed
+// Thinking about making this an async function???
 const callback = function(mutationList) {
     for(const mutation of mutationList) {
         if (mutation.type === "childList"){
@@ -64,7 +66,6 @@ const callback = function(mutationList) {
         }      
     }
 };
-
 // Create an observer instance linked to the callback function
 const observer = new MutationObserver(callback);
 // Start observing the target node for configured mutations
