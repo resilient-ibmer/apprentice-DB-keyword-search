@@ -9,23 +9,18 @@ compHeader.click()
 // Giving the process elements a chance to load.
 setTimeout(traverseProcesses, 100)
 
-// // Watch for popup window mutations
-// const observer = setUpObserver()
-
-// Why cant I scroll after the script finishishes???
-
 async function traverseProcesses(){
     let processes = document.querySelectorAll('#processes') 
 
-    for(let i = 0; processes[i]; i++){
-        console.log(i)
+    for(let i = 0; i < processes.length; i++){
+        console.log("Process #", i)
         // Expand process info
+        processes[i].scrollIntoView()
         processes[i].firstChild.firstChild.click()
-        // Wait/sleep until expanded drop down loads
+        // Wait until expanded drop down loads
         await new Promise(resolve => setTimeout(resolve, 100))
 
         let popupLink = document.querySelector('.ibm-popup-link')
-        // If Comp, open Assesment Criteria link
         if(popupLink){
             popupLink.click()
             await new Promise(waitForLoad)
@@ -33,6 +28,7 @@ async function traverseProcesses(){
         // Collapse process info
         processes[i].firstChild.firstChild.click()
     }
+    document.querySelector("body").style['overflow'] = 'auto'
 }
 
 function traverseCriteriaList(){

@@ -1,0 +1,11 @@
+TODO:
+    * Dont scan through processes everytime
+       - persist the data somewhere so that in the beginning you can just search through a database instead
+
+    * Why cant I scroll after the script finishishes???
+
+    * Do I have to do this synchronously. Wont the events just get queud up everytime??
+
+
+    * Come up with a better solution to just setting `overflow = auto` after scanning all texts
+       - setting the overflow property on the modal instead. 
