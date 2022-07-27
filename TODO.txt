@@ -1,11 +1,14 @@
-TODO:
+TODO:  
+    * Make a backend using node and connect it to sqlite3
+        - Store the processes with their ids and text content
+        - Think about the design of your database
+
     * Dont scan through processes everytime
        - persist the data somewhere so that in the beginning you can just search through a database instead
 
-    * Why cant I scroll after the script finishishes???
-
     * Do I have to do this synchronously. Wont the events just get queud up everytime??
 
+    * Come up with a better solution to scrolling after iterating processes
+        - Setting overflow property at the end of script is the current solution.
 
-    * Come up with a better solution to just setting `overflow = auto` after scanning all texts
-       - setting the overflow property on the modal instead. 
+    * Make it so that it runs even when dropdowns are open?
