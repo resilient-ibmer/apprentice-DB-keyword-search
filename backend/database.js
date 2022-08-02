@@ -15,11 +15,6 @@ const db = new sqlite3.Database('keyword_search.db', (error) => {
 // SET id = 20
 // WHERE id = 1;
 
-
-db.close((error) => {
-    if (error) return console.error(error.message);
-});
-
 function insertTableRows(table, params){
     const sql = "INSERT INTO processes (id, title) VALUES (?,?);"
     db.run(sql, [1, "Apply agile principles and practices"]);
@@ -38,3 +33,8 @@ function printTableRows(table){
     });
 };
 
+
+// It's just good practice \0_0/
+db.close((error) => {
+    if (error) return console.error(error.message);
+});
