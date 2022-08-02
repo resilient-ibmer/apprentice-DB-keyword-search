@@ -5,20 +5,36 @@ const db = new sqlite3.Database('keyword_search.db', (error) => {
     console.log("Connection Succesfull.");
 });
 
-const sql = "INSERT INTO processes (id, title) VALUES (?,?);"
-const sql2 = "SELECT * FROM processes;"
+// INSERT INTO competencies (id, title)
+// VALUES (1, "Understand and demonstrate DevOps automation");
 
-// db.run(sql, [1, "Apply agile principles and practices"]);
+// INSERT INTO criterias (title, competency)
+// VALUES ("Articulate the value of automation to the development lifecycle", 20);
 
-db.all(sql2, (error, rows) => {
-    if (error) return console.error(error.message);
+// UPDATE competencies
+// SET id = 20
+// WHERE id = 1;
 
-    // This is where we would be looking for those keywords entered on the frontend.
-    rows.forEach( (row) => {
-        console.log(row);
-    });
-});
 
 db.close((error) => {
     if (error) return console.error(error.message);
 });
+
+function insertTableRows(table, params){
+    const sql = "INSERT INTO processes (id, title) VALUES (?,?);"
+    db.run(sql, [1, "Apply agile principles and practices"]);
+}
+
+function printTableRows(table){
+    const sql2 = "SELECT * FROM processes;"
+
+    db.all(sql2, (error, rows) => {
+        if (error) return console.error(error.message);
+    
+        // This is where we would be looking for those keywords entered on the frontend.
+        rows.forEach( (row) => {
+            console.log(row);
+        });
+    });
+};
+
