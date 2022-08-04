@@ -1,6 +1,13 @@
 TODO:  
+
+    * Iterate through processes and persist them to the database
+        - Draw up routes
+        - 
+        - Iterate and save them into and object
+        - Send that data to the backend to be persisted
+        - Check if all went good
+
     * Make a backend using node and connect it to sqlite3
-        - Store the processes with their ids and text content
         - Think about the design of your database
 
     * Dont scan through processes everytime

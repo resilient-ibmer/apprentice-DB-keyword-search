@@ -8,3 +8,4 @@ App Functionality
         - Send request to backend where you would iterate through processes
         - From the backend, return an object containing the processes and ids that contain that keyword
         - Once the response is received from the backend, open the processes that contain the keyword and highlight them
+        - Show users links that they can use to fulfill this competency
