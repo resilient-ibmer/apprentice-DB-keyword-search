@@ -1,5 +1,17 @@
 TODO:  
 
+    Currently: fix mutationObserver not picking up when modal opens or closes
+
+    * Refactor!!!
+        - Organize, modularize, 
+        - Shorten functions
+        - Separate Concerns
+
+
+    * Package up the the comps after iterating through them
+        - Send them to backend
+        - Practice sending all the data at once and one by one asynchronously.
+
     * Iterate through processes and persist them to the database
         - Draw up routes
         - 
@@ -10,10 +22,8 @@ TODO:
     * Make a backend using node and connect it to sqlite3
         - Think about the design of your database
 
-    * Dont scan through processes everytime
-       - persist the data somewhere so that in the beginning you can just search through a database instead
-
-    * Do I have to do this synchronously. Wont the events just get queud up everytime??
+    * Do I have to do the process traversing synchronously or can it be done async.
+        - Wont the events just get queud up everytime??
 
     * Come up with a better solution to scrolling after iterating processes
         - Setting overflow property at the end of script is the current solution.
