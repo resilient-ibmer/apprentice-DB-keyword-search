@@ -1,17 +1,9 @@
 TODO:  
 
-    Currently: fix mutationObserver not picking up when modal opens or closes
+    * Update row in schema from criterias -> criteria
 
-    * Refactor!!!
-        - Organize, modularize, 
-        - Shorten functions
-        - Separate Concerns
-
-
-    * Package up the the comps after iterating through them
-        - Send them to backend
-        - Practice sending all the data at once and one by one asynchronously.
-
+    Currently: POST data to backend.
+    https://javascript.info/fetch
     * Iterate through processes and persist them to the database
         - Draw up routes
         - 
@@ -19,11 +11,21 @@ TODO:
         - Send that data to the backend to be persisted
         - Check if all went good
 
+    
+
+    * Refactor!!!
+        - Organize, modularize, 
+        - Shorten functions
+        - Separate Concerns
+
+    * Package up the the comps after iterating through them
+        - Send them to backend
+        - Practice sending all the data at once and one by one asynchronously.
+            - Package all the wp's then send those out and continue going through the rest of competencies.
+
+
     * Make a backend using node and connect it to sqlite3
         - Think about the design of your database
-
-    * Do I have to do the process traversing synchronously or can it be done async.
-        - Wont the events just get queud up everytime??
 
     * Come up with a better solution to scrolling after iterating processes
         - Setting overflow property at the end of script is the current solution.
