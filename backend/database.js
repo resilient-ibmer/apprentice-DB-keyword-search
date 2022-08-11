@@ -5,15 +5,6 @@ const db = new sqlite3.Database('keyword_search.db', (error) => {
     console.log("Connection Succesfull.");
 });
 
-// INSERT INTO competencies (id, title)
-// VALUES (1, "Understand and demonstrate DevOps automation");
-
-// INSERT INTO criterias (title, competency)
-// VALUES ("Articulate the value of automation to the development lifecycle", 20);
-
-// UPDATE competencies
-// SET id = 20
-// WHERE id = 1;
 
 function insertTableRows(table, params){
     const sql = "INSERT INTO processes (id, title) VALUES (?,?);"
@@ -32,7 +23,6 @@ function printTableRows(table){
         });
     });
 };
-
 
 // It's just good practice \0_0/
 db.close((error) => {
