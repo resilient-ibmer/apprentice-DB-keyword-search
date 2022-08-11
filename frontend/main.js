@@ -1,6 +1,6 @@
 // The main headers where all the text is nested in.
 const [workHeader, compHeader] = document.querySelectorAll('.ibm-show')
-let criterias = 0 //133 or 144
+let criteria = 0 //133 total criteria
 
 // Keeps track of comps so that they can then be sent to backend.
 let data = [];
@@ -24,7 +24,7 @@ async function traverseProcesses(){
         let processPack = {
             "id": processes[i].firstChild.id,
             "title": title.substring(0, title.indexOf('\n')),
-            "criterias": []
+            "criteria": []
         };
 
         // Expand process info
@@ -39,7 +39,7 @@ async function traverseProcesses(){
             // Wait for modal to open
             await new Promise(waitForLoad)
             traverseCriteriaList(processPack);
-            
+
             // Wait for modal to close
             // await new Promise(resolve => setTimeout(resolve, 100));
         }
@@ -57,9 +57,9 @@ function traverseCriteriaList(processPack){
     let closeBtn = document.querySelector("a.ibm-close-link.ibm-fright");
 
     for(let i = 0; criteriaList[i]; i++){
-        processPack["criterias"].push(criteriaList[i].innerHTML);
-        console.log(criteriaList[i].innerHTML, criterias);
-        criterias++;
+        processPack["criteria"].push(criteriaList[i].innerHTML);
+        console.log(criteriaList[i].innerHTML, criteria);
+        criteria++;
     }
     // Close criteria pop up
     closeBtn.click()
