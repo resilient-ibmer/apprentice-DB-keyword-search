@@ -10,10 +10,9 @@ async function testConnection(){
 }
 
 
-
-function postToBackend(data){
+async function postToBackend(data){
       
-    let response = await fetch(baseUrl, {
+    let response = await fetch(baseUrl + "/processes", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'

@@ -6,9 +6,18 @@ const db = new sqlite3.Database('keyword_search.db', (error) => {
 });
 
 
-function insertTableRows(table, params){
+function insertTableRows(process){
+    const {id, title, criteria} = process;
     const sql = "INSERT INTO processes (id, title) VALUES (?,?);"
-    db.run(sql, [1, "Apply agile principles and practices"]);
+
+    db.run(sql, [id, title], (error) => {
+        return console.log(error)
+    });
+
+    if (Array.isArray(criteria) && criteria.length){
+        // add to criteri
+        criteriaforEach()
+    };
 }
 
 function printTableRows(table){

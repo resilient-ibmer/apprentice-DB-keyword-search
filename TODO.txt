@@ -1,17 +1,9 @@
 TODO:  
-
-    * Update row in schema from criterias -> criteria
-
-    Currently: POST data to backend.
+    Currently: POST data to backend and persist to both process and criteria tables.
     https://javascript.info/fetch
-    * Iterate through processes and persist them to the database
-        - Draw up routes
-        - 
-        - Iterate and save them into and object
-        - Send that data to the backend to be persisted
-        - Check if all went good
 
-    
+    * Set up some authentication in the backend to make sure requests are coming from approved address
+        - CORS configuration
 
     * Refactor!!!
         - Organize, modularize, 
