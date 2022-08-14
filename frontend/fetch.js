@@ -9,7 +9,7 @@ async function testConnection(){
     console.log(result);
 }
 
-
+ 
 async function postToBackend(data){
       
     let response = await fetch(baseUrl + "/processes", {
@@ -23,3 +23,5 @@ async function postToBackend(data){
     let result = await response.json();
     alert(result.message);
 }
+
+export { postToBackend }; 

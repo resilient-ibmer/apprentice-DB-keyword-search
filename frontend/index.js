@@ -1,3 +1,5 @@
+// import { postToBackend } from './fetch'
+
 // The main headers where all the text is nested in.
 const [workHeader, compHeader] = document.querySelectorAll('.ibm-show')
 let criteria = 0 //133 total criteria
@@ -9,10 +11,12 @@ let data = [];
 workHeader.click()
 compHeader.click()
 
-// Giving the process elements a chance to load.
+// Giving the process elements a chance to load before beginning the traversal
 setTimeout(traverseProcesses, 100)
 
 
+// This wouldn't run everytime. Only on the first time, and whenever the DB changes.
+// Maybe use somehing like the Distill extension to track any differences.
 async function traverseProcesses(){
     let processes = document.querySelectorAll('#processes') 
 
@@ -39,17 +43,15 @@ async function traverseProcesses(){
             // Wait for modal to open
             await new Promise(waitForLoad)
             traverseCriteriaList(processPack);
-
-            // Wait for modal to close
-            // await new Promise(resolve => setTimeout(resolve, 100));
         }
+
         data.push(processPack);
         // Collapse process info
         processes[i].firstChild.firstChild.click()
     }
+    postToBackend(data);
     // Temp fix to the vertical scrolling bar dissapearing after script.
     document.querySelector("body").style['overflow'] = 'auto'
-    console.log(data);
 }
 
 function traverseCriteriaList(processPack){

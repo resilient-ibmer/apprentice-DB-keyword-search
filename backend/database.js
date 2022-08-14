@@ -5,19 +5,20 @@ const db = new sqlite3.Database('keyword_search.db', (error) => {
     console.log("Connection Succesfull.");
 });
 
+function insertTableRows(processes){ 
 
-function insertTableRows(process){
-    const {id, title, criteria} = process;
-    const sql = "INSERT INTO processes (id, title) VALUES (?,?);"
-
-    db.run(sql, [id, title], (error) => {
-        return console.log(error)
-    });
-
-    if (Array.isArray(criteria) && criteria.length){
-        // add to criteri
-        criteriaforEach()
-    };
+    processes.forEach( (process) => {
+        const {id, title, criteria} = process;
+        const sql = "INSERT INTO processes (id, title) VALUES (?,?);"
+    
+        db.run(sql, [id, title], (error) => {
+            return console.log(error)
+        });
+    
+        if (Array.isArray(criteria) && criteria.length){
+            console.log(criteria);
+        };
+    })
 }
 
 function printTableRows(table){
@@ -37,3 +38,5 @@ function printTableRows(table){
 db.close((error) => {
     if (error) return console.error(error.message);
 });
+
+exports.insertTableRows = insertTableRows;

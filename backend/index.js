@@ -1,4 +1,5 @@
 // importing the dependencies
+const database = require("./database");
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -7,20 +8,16 @@ const morgan = require('morgan');
 
 // defining the Express app
 const app = express();
-
-const port = 3001;
-
 // adding Helmet to enhance your Rest API's security
 app.use(helmet());
-
 // using bodyParser to parse JSON bodies into JS objects
 app.use(bodyParser.json());
-
 // enabling CORS for all requests
 app.use(cors());
-
 // adding morgan to log HTTP requests
 app.use(morgan('combined'));
+
+const port = 3001;
 
 // Defining endpoints
 app.get('/', (req, res) => {
@@ -33,9 +30,9 @@ app.get('/processes', (req, res) => {
 
 app.post('/processes', (req, res) => {
   const data = req.body;
+  
+  console.log(data)
 
-
-  res.json( {keyword: "Silla"} );
 });
 
 // starting the server

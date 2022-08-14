@@ -1,9 +1,15 @@
 TODO:  
-    Currently: POST data to backend and persist to both process and criteria tables.
+    Currently: persist data to DB, both process and criteria tables.
     https://javascript.info/fetch
+
+    * Refactor traverseProcesses function in the frontend/
 
     * Set up some authentication in the backend to make sure requests are coming from approved address
         - CORS configuration
+
+    * Add ability to expand/collapse process categories
+        - Ex. There are x processe under "Principles and Practices", by clicking on the category
+        you can expand/collapse them, similar to how its done for Work Processes and Competencies
 
     * Refactor!!!
         - Organize, modularize, 
