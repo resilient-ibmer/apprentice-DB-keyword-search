@@ -1,3 +1,8 @@
+const { title } = require('process');
+
+// Until I figure out how to let SQL take care of ID assignment
+let criteriaID = 0;
+
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('keyword_search.db', (error) => {
     if (error) return console.error(error.message);
@@ -5,21 +10,38 @@ const db = new sqlite3.Database('keyword_search.db', (error) => {
     console.log("Connection Succesfull.");
 });
 
-function insertTableRows(processes){ 
+function insertIntoProceses(processes){ 
+    // Check that processes is array and not empty
 
     processes.forEach( (process) => {
         const {id, title, criteria} = process;
         const sql = "INSERT INTO processes (id, title) VALUES (?,?);"
-    
+        
         db.run(sql, [id, title], (error) => {
-            return console.log(error)
+            if (error) return console.log(error);
         });
     
         if (Array.isArray(criteria) && criteria.length){
-            console.log(criteria);
+            insertIntoCriteria(id, criteria);
         };
-    })
-}
+    });
+};
+
+
+function insertIntoCriteria(processID, criteria){
+    const idCounter = 0
+    const sql = "INSERT INTO criteria (id, title, process_id) VALUES (?, ?, ?);"
+
+    criteria.forEach( title => {
+        db.run(sql, [criteriaID, title, processID], (error) => {
+            if (error){
+                return console.log(error);
+            }else{
+                criteriaID++;
+            } 
+        });
+    });
+};
 
 function printTableRows(table){
     const sql2 = "SELECT * FROM processes;"
@@ -34,9 +56,9 @@ function printTableRows(table){
     });
 };
 
-// It's just good practice \0_0/
-db.close((error) => {
-    if (error) return console.error(error.message);
-});
+// // It's just good practice \0_0/
+// db.close((error) => {
+//     if (error) return console.error(error.message);
+// });
 
-exports.insertTableRows = insertTableRows;
+exports.insertIntoProceses = insertIntoProceses;

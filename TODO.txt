@@ -1,6 +1,6 @@
 TODO:  
     Currently: persist data to DB, both process and criteria tables.
-    https://javascript.info/fetch
+    *   Figure out the ID issue in both tables. Everytime I try to persist the data a constraint error is thrown.
 
     * Refactor traverseProcesses function in the frontend/
 

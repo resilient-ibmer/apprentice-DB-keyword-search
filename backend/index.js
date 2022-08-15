@@ -1,5 +1,5 @@
-// importing the dependencies
 const database = require("./database");
+// importing the dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -30,9 +30,8 @@ app.get('/processes', (req, res) => {
 
 app.post('/processes', (req, res) => {
   const data = req.body;
-  
-  console.log(data)
 
+  database.insertIntoProceses(data);
 });
 
 // starting the server
