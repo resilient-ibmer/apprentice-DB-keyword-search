@@ -1,6 +1,7 @@
 TODO:  
-    Currently: persist data to DB, both process and criteria tables.
-    *   Figure out the ID issue in both tables. Everytime I try to persist the data a constraint error is thrown.
+    Currently: Traverse through contents in the DB(backend) looking for keyword matches
+    - Learn regex??
+    - return process_id for all matches
 
     * Refactor traverseProcesses function in the frontend/
 
@@ -20,7 +21,7 @@ TODO:
         - Send them to backend
         - Practice sending all the data at once and one by one asynchronously.
             - Package all the wp's then send those out and continue going through the rest of competencies.
-            
+
     * Make a backend using node and connect it to sqlite3
         - Think about the design of your database
 
