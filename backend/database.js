@@ -27,18 +27,13 @@ function insertIntoProceses(processes){
     });
 };
 
-
 function insertIntoCriteria(processID, criteria){
-    const idCounter = 0
     const sql = "INSERT INTO criteria (id, title, process_id) VALUES (?, ?, ?);"
 
     criteria.forEach( title => {
+        criteriaID++;
         db.run(sql, [criteriaID, title, processID], (error) => {
-            if (error){
-                return console.log(error);
-            }else{
-                criteriaID++;
-            } 
+            if (error) return console.log(error);
         });
     });
 };

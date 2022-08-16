@@ -20,8 +20,7 @@ TODO:
         - Send them to backend
         - Practice sending all the data at once and one by one asynchronously.
             - Package all the wp's then send those out and continue going through the rest of competencies.
-
-
+            
     * Make a backend using node and connect it to sqlite3
         - Think about the design of your database
 
@@ -29,3 +28,4 @@ TODO:
         - Setting overflow property at the end of script is the current solution.
 
     * Make it so that it runs even when dropdowns are open?
+
