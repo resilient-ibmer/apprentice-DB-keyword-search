@@ -24,8 +24,20 @@ app.get('/', (req, res) => {
   res.json( {keyword: "Silla"} );
 });
 
+
 app.get('/processes', (req, res) => {
-  res.json( {keyword: "Silla"} );
+  let processes, criteria;
+  processes = database.getAllRowsFrom("processes")
+
+  // // Passing in this callback because getAllRows was returning undefined
+  // database.getAllRowsFrom("processes", (rows) => {
+  //   processes = rows;
+  // });
+  // database.getAllRowsFrom("criteria", (rows) => {
+  //   criteria = rows;
+  // });
+
+  res.json( {"processes": processes} );
 });
 
 app.post('/processes', (req, res) => {

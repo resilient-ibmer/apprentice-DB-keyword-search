@@ -1,7 +1,10 @@
-TODO:  
-    Currently: Traverse through contents in the DB(backend) looking for keyword matches
+TODO:  MIGRATE TO NOSQL DB!!!
+
+    Currently: Trying to get the rows from database.js to index.js (app.get(/processes))
+    - on wordMatcher.js, traverse through contents in the DB(backend) looking for keyword matches
     - Learn regex??
     - return process_id for all matches
+    -
 
     * Refactor traverseProcesses function in the frontend/
 

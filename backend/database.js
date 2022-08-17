@@ -37,16 +37,13 @@ function insertIntoCriteria(processID, criteria){
     });
 };
 
-function printTableRows(table){
-    const sql2 = "SELECT * FROM processes;"
-    
-    db.all(sql2, (error, rows) => {
-        if (error) return console.error(error.message);
-        
-        // This is where we would be looking for those keywords entered on the frontend.
-        rows.forEach( (row) => {
-            console.log(row);
-        });
+async function getAllRowsFrom(table){
+    const sql = `SELECT * FROM processes;`
+    db.all(sql, (error, rows) => {
+        if(error) {
+            console.log(error.message);
+        } else
+        console.log(rows);
     });
 };
 
@@ -64,3 +61,4 @@ function isValidArray(array){
     // });
     
 exports.insertIntoProceses = insertIntoProceses;
+exports.getAllRowsFrom = getAllRowsFrom;
