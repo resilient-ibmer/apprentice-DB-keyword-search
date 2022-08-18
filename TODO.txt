@@ -1,10 +1,13 @@
-TODO:  MIGRATE TO NOSQL DB!!!
+TODO: * Store mongoDB credentials in an environment var.
 
-    Currently: Trying to get the rows from database.js to index.js (app.get(/processes))
+    * Persist all data to mongo DB 
+
+    Trying to get the rows from database.js to index.js (app.get(/processes))
     - on wordMatcher.js, traverse through contents in the DB(backend) looking for keyword matches
     - Learn regex??
     - return process_id for all matches
-    -
+    
+    * Organize file structure.
 
     * Refactor traverseProcesses function in the frontend/
 
