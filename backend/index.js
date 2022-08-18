@@ -19,10 +19,15 @@ app.use(morgan('combined'));
 
 const port = 3001;
 
+async function returnAllProcesses(req, res){
+  const processes = await database.getAllProcesses();
+  
+  console.log("index.js", processes);
+  res.json( { processes } );
+};
+
 // Defining endpoints
-app.get('/', (req, res) => {
-  res.json( {keyword: "Silla"} );
-});
+app.get('/', returnAllProcesses);
 
 
 app.get('/processes', (req, res) => {

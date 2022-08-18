@@ -1,51 +1,23 @@
-const { title } = require('process');
+const { MongoClient } = require("mongodb");
 
-// Until I figure out how to let SQL take care of ID assignment
-let criteriaID = 0;
+const uri = "mongodb+srv://arvinf07:n8gLWTZdtFYAJA74@cluster0.vrvlw6h.mongodb.net/?retryWrites=true&w=majority"
 
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('keyword_search.db', (error) => {
-    if (error) return console.error(error.message);
-    console.log("Connection Succesfull.");
-});
+const client = new MongoClient(uri);
 
-function insertIntoProceses(processes){ 
-    if (isValidArray(processes)){
-        processes.forEach( (process) => {
-            const {id, title, criteria} = process;
-            const sql = "INSERT INTO processes (id, title) VALUES (?,?);"
+async function getAllProcesses() {
+  try {
+    const database = client.db('applicationDeveloper');
+    const collection = database.collection('processes')
+    const processes = await collection.find().toArray();
 
-            db.run(sql, [id, title], (error) => {
-                if (error) return console.log(error);
-            });
+    console.log("database.js", processes);
+    return processes;
+  }
+  catch {
+    console.dir;
+  }
+}
 
-            if (isValidArray(criteria)){
-                insertIntoCriteria(id, criteria);
-            };
-        });
-    };
-};
-
-function insertIntoCriteria(processID, criteria){
-    const sql = "INSERT INTO criteria (id, title, process_id) VALUES (?, ?, ?);"
-    
-    criteria.forEach( title => {
-        criteriaID++;
-        db.run(sql, [criteriaID, title, processID], (error) => {
-            if (error) return console.log(error.message);
-        });
-    });
-};
-
-async function getAllRowsFrom(table){
-    const sql = `SELECT * FROM processes;`
-    db.all(sql, (error, rows) => {
-        if(error) {
-            console.log(error.message);
-        } else
-        console.log(rows);
-    });
-};
 
 function isValidArray(array){
     if (Array.isArray(array) && array.length){
@@ -55,10 +27,5 @@ function isValidArray(array){
     }
 };
 
-// // It's just good practice \0_0/
-// db.close((error) => {
-    //     if (error) return console.error(error.message);
-    // });
-    
-exports.insertIntoProceses = insertIntoProceses;
-exports.getAllRowsFrom = getAllRowsFrom;
+// exports.insertIntoProceses = insertIntoProceses;
+exports.getAllProcesses = getAllProcesses;
