@@ -1,21 +1,10 @@
 const path = require('path');
 const dotenv = require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
-
-
-if (dotenv.error) {
-    // Something went wrong
-    console.error(dotenv.error);
-  } else {
-    // Log parsed values
-    console.log(dotenv.parsed);
-  }
-
 const { MongoClient } = require("mongodb");
 
-// console.log(path.resolve(__dirname, '../.env'))
-// console.log(proccess.env.MONGO_USER)
+const {MONGO_USER, MONGO_PASSWORD} = dotenv.parsed;
 
-const uri = "mongodb+srv://arvinf07:n8gLWTZdtFYAJA74@cluster0.vrvlw6h.mongodb.net/?retryWrites=true&w=majority"
+const uri = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@cluster0.vrvlw6h.mongodb.net/?retryWrites=true&w=majority`
 
 const client = new MongoClient(uri);
 
