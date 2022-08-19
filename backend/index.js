@@ -6,9 +6,6 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 
-require('dotenv').config();
-console.log(proccess.env.MONGO_USER)
-
 
 // defining the Express app
 const app = express();
