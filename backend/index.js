@@ -20,36 +20,17 @@ app.use(morgan('combined'));
 
 const port = 3001;
 
-async function returnAllProcesses(req, res){
+// Defining endpoints
+app.get('/processes', async (req, res) => {
   const processes = await database.getAllProcesses();
   
-  console.log("index.js", processes);
   res.json( { processes } );
-};
-
-// Defining endpoints
-app.get('/', returnAllProcesses);
-
-
-app.get('/processes', (req, res) => {
-  let processes, criteria;
-  processes = database.getAllRowsFrom("processes")
-
-  // // Passing in this callback because getAllRows was returning undefined
-  // database.getAllRowsFrom("processes", (rows) => {
-  //   processes = rows;
-  // });
-  // database.getAllRowsFrom("criteria", (rows) => {
-  //   criteria = rows;
-  // });
-
-  res.json( {"processes": processes} );
 });
 
 app.post('/processes', (req, res) => {
   const data = req.body;
 
-  database.insertIntoProceses(data);
+  const result = database.insertAllProcesses(data);
 });
 
 // starting the server
