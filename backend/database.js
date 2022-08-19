@@ -7,21 +7,30 @@ const {MONGO_USER, MONGO_PASSWORD} = dotenv.parsed;
 const uri = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@cluster0.vrvlw6h.mongodb.net/?retryWrites=true&w=majority`
 
 const client = new MongoClient(uri);
+const database = client.db('applicationDeveloper');
+const collection = database.collection('processes')
 
 async function getAllProcesses() {
   try {
-    const database = client.db('applicationDeveloper');
-    const collection = database.collection('processes')
     const processes = await collection.find().toArray();
 
-    console.log("database.js", processes);
     return processes;
   }
-  catch {
-    console.dir;
+  catch (e) {
+    console.log(e);
   }
 }
 
+async function insertAllProcesses(processes){
+    try {
+        const result = await collection.insertMany(processes);
+    
+        console.log(result);
+      }
+      catch (e) {
+        console.log(e);
+      };
+};
 
 function isValidArray(array){
     if (Array.isArray(array) && array.length){
@@ -31,5 +40,5 @@ function isValidArray(array){
     }
 };
 
-// exports.insertIntoProceses = insertIntoProceses;
+exports.insertAllProcesses = insertAllProcesses;
 exports.getAllProcesses = getAllProcesses;
