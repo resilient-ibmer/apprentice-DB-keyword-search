@@ -11,7 +11,6 @@ compHeader.click()
 // Giving the process elements a chance to load before beginning the traversal
 setTimeout(traverseProcesses, 100)
 
-
 // This wouldn't run everytime. Only on the first time, and whenever the DB changes.
 // Maybe use somehing like the Distill extension to track any changes to the webpage.
 async function traverseProcesses(){
@@ -23,7 +22,7 @@ async function traverseProcesses(){
         // Gathering data to be sent to DB
         const title = processes[i].innerText;
         const processPack = {
-            "id": processes[i].firstChild.id,
+            "elementID": processes[i].firstChild.id,
             "title": title.substring(0, title.indexOf('\n')),
             "criteria": []
         };
@@ -45,10 +44,10 @@ async function traverseProcesses(){
         // Collapse process info
         processes[i].firstChild.firstChild.click()
     }
-    // Move this to another file, maybe index.js
-    postToBackend(data);
     // Temp fix to the vertical scrolling bar dissapearing after script.
     document.querySelector("body").style['overflow'] = 'auto';
+    // Move this to another file, maybe index.js
+    postToBackend(data);
 }
 
 function traverseCriteriaList(processPack){
@@ -65,7 +64,7 @@ function traverseCriteriaList(processPack){
 }
 
 // Make this function more dynamic to recognize both 
-// open and close modal mutations correctly.
+// open and close modal mutations
     // I could observe the <body>'s classList if I want to close instead
     // Pass in open or close as arguments?
 function waitForLoad(resolve){
