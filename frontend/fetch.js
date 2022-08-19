@@ -1,6 +1,5 @@
 const baseUrl = "http://localhost:3001"
 
-
 async function testConnection(){
     let response = await fetch(baseUrl);
 
@@ -8,7 +7,6 @@ async function testConnection(){
 
     console.log(result);
 }
-
  
 async function postToBackend(data){
   
