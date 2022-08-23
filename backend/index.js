@@ -25,9 +25,14 @@ const port = 3001;
 app.get('/processes', async (req, res) => {
   const {query} = req.query;
   const processes = await database.getAllProcesses();
+
+  if (!query){
+    return res.json( { processes } );
+  }
+
   const matches = wordMatcher.run(processes, query);
 
-  res.json( { matches } );
+  return res.json( { matches } );
 });
 
 app.post('/processes', (req, res) => {
