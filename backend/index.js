@@ -1,4 +1,5 @@
 const database = require("./database");
+const wordMatcher = require("./wordMatcher");
 // importing the dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -22,9 +23,11 @@ const port = 3001;
 
 // Defining endpoints
 app.get('/processes', async (req, res) => {
+  const {query} = req.query;
   const processes = await database.getAllProcesses();
-  
-  res.json( { processes } );
+  const matches = wordMatcher.run(processes, query);
+
+  res.json( { matches } );
 });
 
 app.post('/processes', (req, res) => {
