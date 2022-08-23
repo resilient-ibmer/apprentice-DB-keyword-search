@@ -1,13 +1,6 @@
-TODO: * Store mongoDB credentials in an environment var.
-
-    * Persist all data to mongo DB 
-
-    Trying to get the rows from database.js to index.js (app.get(/processes))
-    - on wordMatcher.js, traverse through contents in the DB(backend) looking for keyword matches
-    - Learn regex??
-    - return process_id for all matches
+TODO:    * Organize file structure.
     
-    * Organize file structure.
+    * Make it so that it runs even when dropdowns are open?
 
     * Refactor traverseProcesses function in the frontend/
 
@@ -18,21 +11,7 @@ TODO: * Store mongoDB credentials in an environment var.
         - Ex. There are x processe under "Principles and Practices", by clicking on the category
         you can expand/collapse them, similar to how its done for Work Processes and Competencies
 
-    * Refactor!!!
-        - Organize, modularize, 
-        - Shorten functions
-        - Separate Concerns
-
-    * Package up the the comps after iterating through them
-        - Send them to backend
-        - Practice sending all the data at once and one by one asynchronously.
-            - Package all the wp's then send those out and continue going through the rest of competencies.
-
-    * Make a backend using node and connect it to sqlite3
-        - Think about the design of your database
-
     * Come up with a better solution to scrolling after iterating processes
         - Setting overflow property at the end of script is the current solution.
 
-    * Make it so that it runs even when dropdowns are open?
 
