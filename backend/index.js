@@ -30,15 +30,16 @@ app.get('/processes', async (req, res) => {
     return res.json( { processes } );
   }
 
-  const matches = wordMatcher.run(processes, query);
+  const matches = wordMatcher.run(processes, query.toLowerCase());
 
   return res.json( { matches } );
 });
 
-app.post('/processes', (req, res) => {
+app.post('/processes', async (req, res) => {
   const data = req.body;
+  const result = await database.insertAllProcesses(data);
 
-  const result = database.insertAllProcesses(data);
+  return alert(result)
 });
 
 // starting the server
