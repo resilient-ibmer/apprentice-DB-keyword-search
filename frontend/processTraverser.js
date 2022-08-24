@@ -22,7 +22,7 @@ async function traverseProcesses(){
         // Gathering data to be sent to DB
         const title = processes[i].innerText;
         const processPack = {
-            "elementID": processes[i].firstChild.id,
+            "htmlId": processes[i].firstChild.id,
             "title": title.substring(0, title.indexOf('\n')),
             "criteria": []
         };
