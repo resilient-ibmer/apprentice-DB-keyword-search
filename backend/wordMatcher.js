@@ -1,28 +1,23 @@
-
-function run(processes, query){
+function run(processes, matchString){
     const matches = {};
     searchProcesses();
 
     function searchProcesses(){
         processes.forEach(process => {
-            const {elementID, title, criteria} = process;
-            // replace query argument with a case insensitive RegEx that searches for query
-            const match = title.search(query);
+            const {htmlId, title, criteria} = process;
     
-            if (queryMatch(match)){
-                matches[elementID] = 1;
+            if ( queryMatch(title, matchString) ){
+                matches[htmlId] = 1;
             };
             if (criteria.length > 0){
-                searchCriteria(elementID, criteria, query);
+                searchCriteria(htmlId, criteria, matchString);
             };
         });
     };
-    
-    function searchCriteria(processID, criteria, query){ 
+
+    function searchCriteria(processID, criteria, matchString){ 
         criteria.forEach(criterion => {
-            const match = criterion.search(query);
-            
-            if (queryMatch(match)){
+            if ( queryMatch(criterion, matchString) ){
                 if (matches[processID]){
                     matches[processID]++;
                 } else{
@@ -33,17 +28,15 @@ function run(processes, query){
         });
     };
     
-    function queryMatch(match){
-        if (match !== -1){
+    function queryMatch(string, matchString){
+        if (string.toLowerCase().indexOf(matchString) != -1){
             return true;
         } else{
             return false;
-        };
+        }
     };
-    
+
     return matches;
 };
-
-
 
 exports.run = run;
