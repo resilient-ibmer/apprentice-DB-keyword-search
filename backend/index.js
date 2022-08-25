@@ -1,5 +1,5 @@
-const database = require("./database");
-const wordMatcher = require("./wordMatcher");
+const { getAllProcesses, insertAllProcesses } = require("./database");
+const { searchProcesses } = require("./wordMatcher");
 // importing the dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -24,20 +24,19 @@ const port = 3001;
 // Defining endpoints
 app.get('/processes', async (req, res) => {
   const {query} = req.query;
-  const processes = await database.getAllProcesses();
+  const processes = await getAllProcesses();
 
   if (!query){
     return res.json( { processes } );
   }
 
-  const matches = wordMatcher.run(processes, query.toLowerCase());
-
+  const matches = searchProcesses(processes, query.toLowerCase());
   return res.json( { matches } );
 });
 
 app.post('/processes', async (req, res) => {
   const data = req.body;
-  const result = await database.insertAllProcesses(data);
+  const result = await insertAllProcesses(data);
 
   return alert(result)
 });
