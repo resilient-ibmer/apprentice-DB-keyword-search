@@ -1,8 +1,13 @@
-TODO:    * Organize file structure.
+Currently: building out function in fetch.js to query database with user inputted keyword.
+    - think about the flow of data once the user enters a keyword
+
+TODO:    
+    
+    * Organize file structure.
     
     * Make it so that it runs even when dropdowns are open?
 
-    * Refactor traverseProcesses function in the frontend/
+    * Refactor traverseProcesses & wordMatcher function in the frontend/
 
     * Set up some authentication in the backend to make sure requests are coming from approved address
         - CORS configuration
