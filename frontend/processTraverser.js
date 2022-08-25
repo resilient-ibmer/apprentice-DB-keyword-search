@@ -1,7 +1,6 @@
 // import { postToBackend } from './fetch'
 
 const [workHeader, compHeader] = document.querySelectorAll('.ibm-show')
-// Keeps track of comps so that they can then be sent to backend.
 const data = [];
 
 // Open the header drop downs
