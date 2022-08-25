@@ -1,15 +1,14 @@
 const baseUrl = "http://localhost:3001"
 
-async function testConnection(){
-    let response = await fetch(baseUrl);
 
-    let result = await response.json();
+async function searchForMatches(queryString){
+  let response = await fetch(baseUrl + `/processes?query=${queryString}`)
+  let result = await response.json();
 
-    console.log(result);
-}
+  return result;
+};
  
 async function postToBackend(data){
-  
     let response = await fetch(baseUrl + "/processes", {
       method: 'POST',
       headers: {
@@ -22,4 +21,4 @@ async function postToBackend(data){
     alert(result.message);
 }
 
-export { postToBackend }; 
+export { postToBackend, searchForMatches }; 
