@@ -1,8 +1,14 @@
-Currently: building out function in fetch.js to query database with user inputted keyword.
-    - think about the flow of data once the user enters a keyword
+Currently: Begin making this into a chrome extension 
+        - https://developer.chrome.com/docs/extensions/mv3/getstarted/
+            - create a manifest.json file -> https://developer.chrome.com/docs/extensions/mv3/manifest/
+                - action: should use DeclarativeContentAPI -> https://developer.chrome.com/docs/extensions/mv3/user_interface/#activate_pagess
 
 TODO:    
-    
+
+    * Style using MaterialUI
+
+    * Look for services in the catalog that you can integrate using IBM Cloud 
+
     * Organize file structure.
     
     * Make it so that it runs even when dropdowns are open?

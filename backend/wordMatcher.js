@@ -13,8 +13,7 @@ function searchProcesses(processes, matchString){
             searchCriteria(htmlId, criteria, matchString);
         };
     });
-    const matchIds =  Object.keys(matches);
-    return processes.filter((process) => matchIds.includes(process.htmlId));
+    return matches;
 };
 
 function searchCriteria(processID, criteria, matchString){ 
